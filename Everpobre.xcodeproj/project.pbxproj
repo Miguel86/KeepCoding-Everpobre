@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		D694AE1E2051CF7500AA8987 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D694AE1D2051CF7500AA8987 /* AppDelegate.swift */; };
-		D694AE202051CF7500AA8987 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D694AE1F2051CF7500AA8987 /* ViewController.swift */; };
-		D694AE232051CF7500AA8987 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D694AE212051CF7500AA8987 /* Main.storyboard */; };
 		D694AE252051CF7500AA8987 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D694AE242051CF7500AA8987 /* Assets.xcassets */; };
 		D694AE282051CF7500AA8987 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D694AE262051CF7500AA8987 /* LaunchScreen.storyboard */; };
+		D694AE312051CFB900AA8987 /* NoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D694AE2F2051CFB900AA8987 /* NoteVC.swift */; };
+		D694AE322051CFB900AA8987 /* NoteVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D694AE302051CFB900AA8987 /* NoteVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D694AE1A2051CF7500AA8987 /* Everpobre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everpobre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D694AE1D2051CF7500AA8987 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D694AE1F2051CF7500AA8987 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D694AE222051CF7500AA8987 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D694AE242051CF7500AA8987 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D694AE272051CF7500AA8987 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D694AE292051CF7500AA8987 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D694AE2F2051CFB900AA8987 /* NoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteVC.swift; sourceTree = "<group>"; };
+		D694AE302051CFB900AA8987 /* NoteVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +55,11 @@
 			isa = PBXGroup;
 			children = (
 				D694AE1D2051CF7500AA8987 /* AppDelegate.swift */,
-				D694AE1F2051CF7500AA8987 /* ViewController.swift */,
-				D694AE212051CF7500AA8987 /* Main.storyboard */,
 				D694AE242051CF7500AA8987 /* Assets.xcassets */,
 				D694AE262051CF7500AA8987 /* LaunchScreen.storyboard */,
 				D694AE292051CF7500AA8987 /* Info.plist */,
+				D694AE2F2051CFB900AA8987 /* NoteVC.swift */,
+				D694AE302051CFB900AA8987 /* NoteVC.xib */,
 			);
 			path = Everpobre;
 			sourceTree = "<group>";
@@ -125,7 +125,7 @@
 			files = (
 				D694AE282051CF7500AA8987 /* LaunchScreen.storyboard in Resources */,
 				D694AE252051CF7500AA8987 /* Assets.xcassets in Resources */,
-				D694AE232051CF7500AA8987 /* Main.storyboard in Resources */,
+				D694AE322051CFB900AA8987 /* NoteVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D694AE202051CF7500AA8987 /* ViewController.swift in Sources */,
+				D694AE312051CFB900AA8987 /* NoteVC.swift in Sources */,
 				D694AE1E2051CF7500AA8987 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,14 +144,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D694AE212051CF7500AA8987 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D694AE222051CF7500AA8987 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D694AE262051CF7500AA8987 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
