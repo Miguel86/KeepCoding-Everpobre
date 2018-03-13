@@ -11,6 +11,7 @@ import CoreData
 
 class NotesTableVC: UITableViewController {
     var noteList:[Note] = []
+    var observer: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +39,19 @@ class NotesTableVC: UITableViewController {
         
         //5.- Ejecutamos la request.
         try! noteList = viewMOC.fetch(fetchRequest)
+        
+        observer = NotificationCenter.default.addObserver(forName:Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.main, using: {( notification) in
+                self.tableView.reloadData()
+        })
+        
     }
 
+    deinit {
+        if let obs = observer
+        {
+            NotificationCenter.default.removeObserver(obs)
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
