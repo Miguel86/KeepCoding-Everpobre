@@ -133,7 +133,7 @@ class NotesTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
         /* En un hilo secundario */
         let privateMOC = DataManager.sharedManager.persistentContainer.newBackgroundContext()
         privateMOC.perform {
-            let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: DataManager.sharedManager.persistentContainer.viewContext) as! Note
+            let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: privateMOC) as! Note
             
             let dict = ["title": "Nueva nota from KVC","createdAtTI":Date().timeIntervalSince1970] as [String : Any]
             note.setValuesForKeys(dict)
