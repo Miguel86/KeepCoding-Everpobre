@@ -10,7 +10,8 @@ import UIKit
 import CoreData
 
 class NotesTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
-    var noteList:[Note] = []
+    /* Con fetchedResultController no es necesario*/
+    //var noteList:[Note] = []
     var observer: NSObjectProtocol?
     var fetchedResultController: NSFetchedResultsController<Note>!
     override func viewDidLoad() {
@@ -115,6 +116,9 @@ class NotesTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
         navigationController?.pushViewController(noteViewController, animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return fetchedResultController.sections![section].name
+    }
     @objc func addNewNote()  {
         /* En el hilo principal
         //TRADICIONALMENTE.
@@ -135,13 +139,18 @@ class NotesTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
             //try! DataManager.sharedManager.persistentContainer.viewContext.save()
             try! privateMOC.save()
             
+            /* En Datamanager ahora usamos automaticallyMergesChangesFromParent
+             En cuanto se guarda el moc, se actualiza el persistente container y como tenemos nuestro contenido manejado con el NSFetchedResultsController
+             se entera y actualiza.
             DispatchQueue.main.async {
                 let noteinMainThread = DataManager.sharedManager.persistentContainer.viewContext.object(with: note.objectID) as! Note
-                self.noteList.append(noteinMainThread)
                 
                 /* Con fetchedResultController ya el delegado actualiza */
+                //self.noteList.append(noteinMainThread)
                 //self.tableView.reloadData()
-            }
+            }*/
+            
+            
             
         }
     }
