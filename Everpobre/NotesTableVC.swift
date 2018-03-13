@@ -9,10 +9,10 @@
 import UIKit
 import CoreData
 
-class NotesTableVC: UITableViewController {
+class NotesTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
     var noteList:[Note] = []
     var observer: NSObjectProtocol?
-    
+    var fetchedResultController: NSFetchedResultsController<Note>!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,13 +37,20 @@ class NotesTableVC: UITableViewController {
         let predicate = NSPredicate(format: "createdAtTI >= %f", created24)
         fetchRequest.predicate = predicate
         
-        //5.- Ejecutamos la request.
+        /* Sin fetchedResultController
+         //5.- Ejecutamos la request.
         try! noteList = viewMOC.fetch(fetchRequest)
         
         observer = NotificationCenter.default.addObserver(forName:Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.main, using: {( notification) in
                 self.tableView.reloadData()
-        })
+        })*/
         
+        /* Con fetchedResultController */
+        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: viewMOC, sectionNameKeyPath: nil, cacheName: nil)
+        
+        try! fetchedResultController.performFetch()
+        
+        fetchedResultController.delegate = self
     }
 
     deinit {
@@ -68,10 +75,16 @@ class NotesTableVC: UITableViewController {
     }
 
     // MARK: - Table view data source
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultController.sections!.count
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        /* Sin fetchedResultController
+        return noteList.count*/
         
-        return noteList.count
+        /* Con fetchedResultController */
+        return fetchedResultController.sections![section].numberOfObjects
     }
     
     
@@ -82,7 +95,11 @@ class NotesTableVC: UITableViewController {
             cell = UITableViewCell(style: .default, reuseIdentifier: "reuseIdentifier")
         }
         
-        cell?.textLabel?.text = noteList[indexPath.row].title
+        /* Sin fetchedResultController
+        cell?.textLabel?.text = noteList[indexPath.row].title*/
+        
+        /* Con fetchedResultController */
+        cell?.textLabel?.text = fetchedResultController.object(at: indexPath).title
         
         return cell!
     }
@@ -90,7 +107,11 @@ class NotesTableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let noteViewController = NoteVCByCode()
-        noteViewController.note = noteList[indexPath.row]
+        /* Sin fetchedResultController
+        noteViewController.note = noteList[indexPath.row]*/
+        
+        /* Con fetchedResultController */
+        noteViewController.note = fetchedResultController.object(at: indexPath)
         navigationController?.pushViewController(noteViewController, animated: true)
     }
     
@@ -117,7 +138,9 @@ class NotesTableVC: UITableViewController {
             DispatchQueue.main.async {
                 let noteinMainThread = DataManager.sharedManager.persistentContainer.viewContext.object(with: note.objectID) as! Note
                 self.noteList.append(noteinMainThread)
-                self.tableView.reloadData()
+                
+                /* Con fetchedResultController ya el delegado actualiza */
+                //self.tableView.reloadData()
             }
             
         }
@@ -125,6 +148,10 @@ class NotesTableVC: UITableViewController {
     
     @objc func updateInfo(){
         print("Evento de cambio de contexto detectado")
+        tableView.reloadData()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.reloadData()
     }
 }
