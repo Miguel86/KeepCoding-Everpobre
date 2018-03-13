@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D604DB48205871F000601522 /* ManagedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D604DB47205871F000601522 /* ManagedObjects.swift */; };
 		D694AE1E2051CF7500AA8987 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D694AE1D2051CF7500AA8987 /* AppDelegate.swift */; };
 		D694AE252051CF7500AA8987 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D694AE242051CF7500AA8987 /* Assets.xcassets */; };
 		D694AE282051CF7500AA8987 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D694AE262051CF7500AA8987 /* LaunchScreen.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D604DB47205871F000601522 /* ManagedObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjects.swift; sourceTree = "<group>"; };
 		D694AE1A2051CF7500AA8987 /* Everpobre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everpobre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D694AE1D2051CF7500AA8987 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D694AE242051CF7500AA8987 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D604DB46205871C700601522 /* ManagedObject */ = {
+			isa = PBXGroup;
+			children = (
+				D604DB47205871F000601522 /* ManagedObjects.swift */,
+			);
+			path = ManagedObject;
+			sourceTree = "<group>";
+		};
 		D694AE112051CF7500AA8987 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 		D6E0948E2057181B000E2534 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D604DB46205871C700601522 /* ManagedObject */,
 				D6E0948F2057182C000E2534 /* Everpobre.xcdatamodeld */,
 				D6E09492205720A4000E2534 /* DataManager.swift */,
 			);
@@ -157,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6E094912057182C000E2534 /* Everpobre.xcdatamodeld in Sources */,
+				D604DB48205871F000601522 /* ManagedObjects.swift in Sources */,
 				D6E094952057316E000E2534 /* NotesTableVC.swift in Sources */,
 				D6E09493205720A4000E2534 /* DataManager.swift in Sources */,
 				D694AE312051CFB900AA8987 /* NoteVC.swift in Sources */,
