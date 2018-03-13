@@ -18,9 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         window = UIWindow()
-        let noteVC = NoteVC()
+        //let noteVC = NoteVC()
+        //window?.rootViewController = noteVC
         
-        window?.rootViewController = noteVC
+        //let noteVCByCode = NoteVCByCode()
+        //window?.rootViewController = noteVCByCode
+        
+        let notesTableVC = NotesTableVC(style: .plain)
+        let navController = UINavigationController(rootViewController: notesTableVC)
+        
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()
         return true
     }
